@@ -8,9 +8,11 @@ module RSpec
       attr_accessor :reporter,
                     :result_parser
 
-      def initialize(reporter: reporter, result_parser: result_parser)
-        self.reporter = reporter
-        self.result_parser = result_parser
+      def initialize(opts = {})
+        defaults = { :reporter => reporter, :result_parser => result_parser }
+        opts = defaults.merge(opts)
+        self.reporter = opts[:reporter]
+        self.result_parser = opts[:result_parser]
       end
 
       def execute!
