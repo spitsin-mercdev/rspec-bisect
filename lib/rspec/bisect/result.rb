@@ -4,7 +4,7 @@ module RSpec
       class ParserError < StandardError; end
 
       def as_json
-        parsed_lines = result_string.split("\n").lazy.map do |line|
+        parsed_lines = result_string.split("\n").map do |line|
           begin
             JSON.parse line
           rescue JSON::ParserError
