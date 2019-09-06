@@ -5,4 +5,4 @@ require 'rspec/bisect'
 include RSpec::Bisect::Reporters
 reporter = ConsoleReporter.new
 
-RSpec::Bisect::Runner.new(reporter: reporter).execute!
+RSpec::Bisect::Runner.new(:reporter => reporter).execute!

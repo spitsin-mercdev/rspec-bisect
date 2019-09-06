@@ -68,11 +68,11 @@ module RSpec
         end
 
         def progress_bar(additional_options)
-          ProgressBar.create({format: '%t |%w>%i| %c/%C |%e'}.merge(additional_options))
+          ProgressBar.create({:format => '%t |%w>%i| %c/%C |%e'}.merge(additional_options))
         end
 
-        dependent_examples_progress = progress_bar title: 'Detecting Dependent Examples',
-                                                   total: failing_examples.size
+        dependent_examples_progress = progress_bar :title => 'Detecting Dependent Examples',
+                                                   :total => failing_examples.size
 
         order_dependent_examples = failing_examples.select do |example|
           run_examples([example])
@@ -86,9 +86,9 @@ module RSpec
         order_dependent_examples.each do |example|
           reporter.determining_culprits example
 
-          culprit_progress = progress_bar title: 'Determining culprits',
-                                          total: nil,
-                                          format: '%t |%i| %c potential culprits'
+          culprit_progress = progress_bar :title => 'Determining culprits',
+                                          :total => nil,
+                                          :format => '%t |%i| %c potential culprits'
 
           culprits = examples.take_while do |e|
             example['file_path'] != e['file_path'] ||

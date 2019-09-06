@@ -8,7 +8,7 @@ describe RSpec::Bisect::Result do
     subject { described_class.new(result).as_json }
 
     context 'with one line of json' do
-      let(:result) { { some: 'json' }.to_json }
+      let(:result) { { :some => 'json' }.to_json }
 
       it { is_expected.to eq({'some' => 'json'}) }
     end
